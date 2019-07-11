@@ -28,4 +28,10 @@ class Star
     result = SqlRunner.run(sql)
     return result.map { |star| Star.new(star)}
   end
+
+  def self.delete_all()
+    sql = "DELETE FROM stars"
+    SqlRunner.run(sql)
+  end
+  
 end

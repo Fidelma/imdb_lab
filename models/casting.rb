@@ -14,4 +14,17 @@ class Casting
     @fee = options['fee']
   end
 
+  def save()
+    sql = "INSERT INTO castings
+    (
+      movie_id,
+      star_id,
+      fee
+      )
+      VALUES ($1, $2, $3)
+      RETURNING id"
+    values = [@movie_id, @star_id, @fee]
+    SqlRunner.run(sql, values)
+  end
+
 end
