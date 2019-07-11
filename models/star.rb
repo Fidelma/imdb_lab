@@ -20,6 +20,12 @@ class Star
       VALUES ($1, $2)
       RETURNING id"
     values = [@first_name, @last_name]
-    SqlRunner.run(sql, values)  
+    SqlRunner.run(sql, values)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM stars"
+    result = SqlRunner.run(sql)
+    return result.map { |star| Star.new(star)}
   end
 end
