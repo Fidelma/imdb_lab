@@ -20,7 +20,7 @@ class Star
       VALUES ($1, $2)
       RETURNING id"
     values = [@first_name, @last_name]
-    SqlRunner.run(sql, values)
+    @id = SqlRunner.run(sql, values)[0]['id'].to_i
   end
 
   def self.all()
@@ -33,5 +33,5 @@ class Star
     sql = "DELETE FROM stars"
     SqlRunner.run(sql)
   end
-  
+
 end

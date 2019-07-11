@@ -24,7 +24,7 @@ class Casting
       VALUES ($1, $2, $3)
       RETURNING id"
     values = [@movie_id, @star_id, @fee]
-    SqlRunner.run(sql, values)
+    @id = SqlRunner.run(sql, values)[0]['id'].to_i
   end
 
   def self.all()

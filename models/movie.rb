@@ -20,7 +20,7 @@ class Movie
       VALUES ($1, $2)
       RETURNING id"
     values = [@title, @genre]
-    SqlRunner.run(sql, values)
+    @id = SqlRunner.run(sql, values)[0]['id'].to_i
   end
 
   def self.all()
