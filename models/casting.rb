@@ -33,4 +33,9 @@ class Casting
     return result.map { |casting| Casting.new(casting)}
   end
 
+  def self.delete_all()
+    sql = "DELETE FROM castings"
+    SqlRunner.run(sql)
+  end
+
 end
